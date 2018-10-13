@@ -21,10 +21,12 @@ class Launcher(Level):
         font_size = 60
         for game in Globals.game_list:
             game_button = GameButtonText(self, 40, curr_y_pos, game[0], game[1], font_size)
-            font_size -= 5
+            font_size -= 10
             curr_y_pos += 60
             self.add_room_object(game_button)
             self.games.append(game_button)
+        self.games[0].colour = (0, 0, 0)
+        self.games[0].update_text()
 
     def run_game(self, game_title):
         pygame.display.toggle_fullscreen()
@@ -45,7 +47,11 @@ class Launcher(Level):
                     game.increase_size()
                 else:
                     game.decrease_size()
+            self.games[self.curr_selection].colour = (255, 255, 255)
+            self.games[self.curr_selection].update_text()
             self.curr_selection -= 1
+            self.games[self.curr_selection].colour = (0, 0, 0)
+            self.games[self.curr_selection].update_text()
 
     def selection_next(self):
         if self.curr_selection < len(self.games) - 1:
@@ -55,7 +61,11 @@ class Launcher(Level):
                     game.increase_size()
                 else:
                     game.decrease_size()
+            self.games[self.curr_selection].colour = (255, 255, 255)
+            self.games[self.curr_selection].update_text()
             self.curr_selection += 1
+            self.games[self.curr_selection].colour = (0, 0, 0)
+            self.games[self.curr_selection].update_text()
 
     def select(self):
         self.games[self.curr_selection].selected()

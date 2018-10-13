@@ -11,9 +11,9 @@ class GameButtonText(TextObject):
         self.room.run_game(self.game_title)
 
     def increase_size(self):
-        self.size += 5
+        self.size += 10
         self.update_text()
 
     def decrease_size(self):
-        self.size -= 5
+        self.size -= 10
         self.update_text()

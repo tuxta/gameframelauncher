@@ -6,6 +6,7 @@ class TitleText(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
+        self.selectable = True
         image = self.load_image('header.png')
         self.set_image(image, 800, 100)
 
@@ -17,8 +18,17 @@ class TitleText(RoomObject):
             self.room.quitting = True
             Globals.running = False
         if key[pygame.K_UP]:
-            self.room.selection_prev()
+            if self.selectable:
+                self.room.selection_prev()
+                self.selectable = False
+                self.set_timer(12, self.set_selectable)
         elif key[pygame.K_DOWN]:
-            self.room.selection_next()
+            if self.selectable:
+                self.room.selection_next()
+                self.selectable = False
+                self.set_timer(12, self.set_selectable)
         if key[pygame.K_RETURN]:
             self.room.select()
+
+    def set_selectable(self):
+        self.selectable = True
