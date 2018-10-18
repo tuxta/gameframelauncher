@@ -30,8 +30,11 @@ class Globals:
     # - Add the game name and directory here - #
     # - Replace these examples with the games you add - #
     game_list = [
-        ['Flailing Sparrow', 'flailing_sparrow'],
-        ['Square Shooter', 'SquareShooter']
+        ['Pong', 'Pong'],
+        ['Pong', 'Pong'],
+        ['Pong', 'Pong'],
+        ['Pong', 'Pong'],
+        ['Pong', 'Pong']
     ]
 
 # ############################################################# #
